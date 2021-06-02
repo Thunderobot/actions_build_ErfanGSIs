@@ -26,31 +26,35 @@ jobs:
     steps:
        - name: Checkout
          uses: actions/checkout@master
-           
+      
+       - name: Clean Up
+         run: |
+           docker rmi `docker images-q`
+           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
+           sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnte* powershell openjdk* mysql* php*
+           sudo -E apt-gey update
+           sudo -E apt-gey -y autoremove --purge
+           sydo -E apt-gey clean
+       
        - name: Initialization environment
          run: |
-            sudo -E apt-get -qq install git wget
-       
-       - name: Clone ErfanGSI Source Code
-         run: git clone --recurse-submodules https://github.com/erfanoabdi/ErfanGSIs.git ErfanGSIs
+              sudo -E apt-gey -qq update 
+              sudo -E apt-gey -qq install git openjdk-8-jdk wget
+              
+       - name: Clone ErfanGSI Source Cold
+         run: git clone --resurse-submodules https://github.com/erfanoabdi/ErfansGSIs.git
          
-       - name: Fix exit
+       - name: Setting up ErfanGSI requirements
          run: |
-              sed -i 's/\|\| exit 1//g' $GITHUB_WORKSPACE/ErfanGSIs/url2GSI.sh
-              sed -i 's/exit 1//g' $GITHUB_WORKSPACE/ErfanGSIs/url2GSI.sh
-       
-       - name: Setting up ErfanGSI requirements with Xiaoxin script
-         run: |
+              sudo chmod -R 777 ErfansGSIs
               cd ErfanGSIs
-              mkdir ./output
-              wget https://raw.githubusercontent.com/TimeMapleLing/actions_build_SGSI/main/bin/setup.sh -o setup-xiaoxin.sh
-              sudo bash setup-xiaoxin.sh
+              sudo bash setup.sh
        
        - name: Download Stock Rom & Generate GSI
          run: sudo ./ErfanGSIs/url2GSI.sh -c -b $ROM_URL $ROM_NAME
        
        - name: Zip GSI
-         run: 
+         run: |
               mkdir final
               zip-r final/GSI.zip /home/runner/work/actions_build_ErfanGSIs/work/actions_build_ErfanGSIs/ErfanGSIs/output/
      
