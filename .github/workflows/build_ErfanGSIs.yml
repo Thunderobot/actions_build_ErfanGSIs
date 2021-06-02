@@ -50,8 +50,9 @@ jobs:
          run: sudo ./ErfanGSIs/url2GSI.sh -c -b $ROM_URL $ROM_NAME
        
        - name: Zip GSI
-               mkdir final
-               zip-r final/GSI.zip /home/runner/work/actions_build_ErfanGSIs/work/actions_build_ErfanGSIs/ErfanGSIs/output/
+         run: 
+              mkdir final
+              zip-r final/GSI.zip /home/runner/work/actions_build_ErfanGSIs/work/actions_build_ErfanGSIs/ErfanGSIs/output/
      
        - name: Upload GSI to Bitsend
          run: |
