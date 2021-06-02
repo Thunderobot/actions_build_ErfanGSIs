@@ -32,9 +32,9 @@ jobs:
            docker rmi `docker images -q`
            sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
            sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
-           sudo -E apt-gey update
-           sudo -E apt-gey -y autoremove --purge
-           sydo -E apt-gey clean
+           sudo -E apt-get update
+           sudo -E apt-get -y autoremove --purge
+           sydo -E apt-get clean
        
        - name: Initialization environment
          run: |
