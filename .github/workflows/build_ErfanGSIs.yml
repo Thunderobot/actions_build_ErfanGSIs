@@ -38,8 +38,8 @@ jobs:
        
        - name: Initialization environment
          run: |
-              sudo -E apt-gey -qq update 
-              sudo -E apt-gey -qq install git openjdk-8-jdk wget
+              sudo -E apt-get -qq update 
+              sudo -E apt-get -qq install git openjdk-8-jdk wget
               
        - name: Clone ErfanGSI Source Cold
          run: git clone --resurse-submodules https://github.com/erfanoabdi/ErfansGSIs.git
