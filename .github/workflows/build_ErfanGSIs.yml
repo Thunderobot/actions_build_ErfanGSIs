@@ -14,7 +14,7 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://bigota.d.miui.com/V11.0.1.0.NDKCNXM/miui_HMNote5A_V11.0.1.0.NDKCNXM_34686dccfa_7.1.zip
+  ROM_URL: https://bigota.d.miui.com/9.8.29/miui_HMNote5ALITE_9.8.29_aa358ff714_7.1.zip
   ROM_NAME: MIUI
   TZ: Asia/Shanghai
 
